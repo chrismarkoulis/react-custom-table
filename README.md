@@ -1,1 +1,3 @@
-# react-custom-table
+# Custom data table with TypeScript React
+
+

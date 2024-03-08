@@ -1,0 +1,32 @@
+/* Table styles */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th,
+  .table td {
+    padding: 8px 16px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .equities {
+    background-color: blue;
+  }
+  
+  .credit {
+    background-color: green;
+  }
+  
+  .macro {
+    background-color: white;
+  }
+  
+  .price.positive {
+    color: blue;
+  }
+  
+  .price.negative {
+    color: red;
+  }
+  
