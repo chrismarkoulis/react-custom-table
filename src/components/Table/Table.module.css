@@ -1,0 +1,35 @@
+/* Table.module.css */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.header {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.row {
+  border-bottom: 1px solid #ccc;
+}
+
+.equities {
+  background-color: #cce5ff; /* Light blue */
+}
+
+.macro {
+  background-color: #ffffff; /* White */
+}
+
+.credit {
+  background-color: #e6ffe6; /* Light green */
+}
+
+.positive {
+  color: blue;
+}
+
+.negative {
+  color: red;
+}

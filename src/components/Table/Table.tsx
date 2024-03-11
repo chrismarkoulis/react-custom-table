@@ -1,26 +1,67 @@
-import React from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import { TableRow } from '../';
 import { FinancialInstrument } from 'models';
+import styles from './Table.module.css';
 
 interface TableProps {
   financialData: FinancialInstrument[]
 }
 
-const Table: React.FC<TableProps> = ({ financialData }) => (
-  <table className="table">
-    <thead>
-      <tr>
-        <th>Ticker</th>
-        <th>Price</th>
-        <th>Asset Class</th>
-      </tr>
-    </thead>
-    <tbody>
-      {financialData.map((item: FinancialInstrument) => (
-        <TableRow key={item.ticker} financialInstrument={item} />
-      ))}
-    </tbody>
-  </table>
-);
+type SortOrder = 'asc' | 'desc';
+
+const Table: React.FC<TableProps> = ({ financialData }) => {
+  const [sortBy, setSortBy] = useState<string>('ticker');
+  const [sortOrder, setSortOrder] = useState<SortOrder>('asc');
+
+  const sortedData = useMemo(() => {
+    return [...financialData].sort((a, b) => {
+      switch (sortBy) {
+        case 'assetClass':
+          const assetClassOrder: Record<string, number> = {
+            Equities: 1,
+            Macro: 2,
+            Credit: 3,
+          };
+          return (assetClassOrder[a.assetClass] || Infinity) - (assetClassOrder[b.assetClass] || Infinity);
+        case 'price':
+          return sortOrder === 'asc' ? a.price - b.price : b.price - a.price;
+        case 'ticker':
+        default:
+          return sortOrder === 'asc' ? a.ticker.localeCompare(b.ticker) : b.ticker.localeCompare(a.ticker);
+      }
+    });
+  }, [financialData, sortBy, sortOrder]);
+
+
+  const handleSort = useCallback(
+    (clickedColumn: string) => {
+      if (sortBy === clickedColumn) {
+        setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+      } else {
+        setSortBy(clickedColumn);
+        setSortOrder('asc');
+      }
+    },
+    [sortBy, sortOrder]
+  );
+
+
+  return (
+    <table className={styles.table}>
+      <thead>
+        <tr className={styles.header}>
+          <th onClick={() => handleSort('ticker')}>Ticker</th>
+          <th onClick={() => handleSort('price')}>Price</th>
+          <th onClick={() => handleSort('assetClass')}>Asset Class</th>
+        </tr>
+      </thead>
+      <tbody>
+        {sortedData.map((item: FinancialInstrument) => (
+          <TableRow key={item.ticker} financialInstrument={item} />
+        ))}
+      </tbody>
+    </table>
+  );
+};
 
 export default Table;

@@ -1,0 +1,13 @@
+/* TableRow.module.css */
+
+.row {
+  border-bottom: 1px solid #ccc;
+}
+
+.positive {
+  color: blue;
+}
+
+.negative {
+  color: red;
+}
