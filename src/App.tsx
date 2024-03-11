@@ -1,23 +1,22 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import {fetchFinancialData} from './redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from './store/reducers/';
+import { fetchFinancialData } from './store/action-creators/';
 import { Table } from './components';
-import {initialFinancialDataState} from './redux/reducers';
-
 
 const App: React.FC = () => {
-  const dispatch = useDispatch<any>();
 
+  const dispatch = useDispatch<any>();
+  const financialData = useSelector((state: RootState) => state.financialData.data);
+  
   useEffect(() => {
     dispatch(fetchFinancialData());
-    console.log(initialFinancialDataState);
-    
   }, [dispatch]);
 
   return (
     <div className="app-container">
       <h1>Financial Instruments Table</h1>
-      <Table />
+      <Table financialData={financialData} />
     </div>
   );
 };

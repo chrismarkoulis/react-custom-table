@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { FinancialInstrument } from '../redux/types';
-
+import { FinancialInstrument } from 'models';
 
 export const fetchFinancialData = async (): Promise<FinancialInstrument[]>=> {
-  return await axios.get('../../sampleData.json');
+  const response = await axios.get('../../sampleData.json');
+  return response.data;
 };

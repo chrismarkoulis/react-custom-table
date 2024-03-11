@@ -5,12 +5,15 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-    "baseUrl": "./src",
+    "baseUrl": "src/",
 
     /* Paths */
     "paths": {
-      "@types/*": ["src/redux/types/*"],
-      "@components/*": ["src/components/*"]
+      "@components/*": ["components/*"],
+      "@models/*": ["models/*"],
+      "@store/*": ["store/*"],
+      "@api/*": ["api/*"],      
+      "@css/*": ["css/*"]      
     },
 
     /* Bundler mode */

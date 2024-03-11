@@ -1,5 +1,5 @@
 import React from 'react';
-import { FinancialInstrument } from '../../redux/types';
+import { FinancialInstrument } from 'models';
 
 interface Props {
   financialInstrument: FinancialInstrument;
