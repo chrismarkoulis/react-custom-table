@@ -14,7 +14,7 @@ export interface FinancialDataState {
 
 export const initialFinancialDataState: FinancialDataState = {
     data: [],
-    loading: false,
+    loading: undefined,
     error: null,
 };
 

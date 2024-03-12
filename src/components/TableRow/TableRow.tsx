@@ -2,27 +2,26 @@ import React from 'react';
 import { FinancialInstrument } from 'models';
 import styles from './TableRow.module.css';
 
-interface Props {
+interface TableRowProps {
   financialInstrument: FinancialInstrument;
 }
 
-const TableRow: React.FC<Props> = ({ financialInstrument }) => {
+const TableRow: React.FC<TableRowProps> = ({ financialInstrument }) => {
   const { ticker, price, assetClass } = financialInstrument;
+  const priceColor = price >= 0 ? 'blue' : 'red';
 
   const assetClassColor = () => {
     switch (assetClass) {
       case 'Equities':
-        return 'blue';
+        return styles.equities;
       case 'Macro':
-        return 'white';
+        return styles.macro;
       case 'Credit':
-        return 'green';
+        return styles.credit;
       default:
-        return 'black';
+        return styles.black;
     }
   };
-
-  const priceColor = price >= 0 ? 'blue' : 'red';
 
   return (
     <tr className={`${styles.row} ${assetClassColor()}`}>

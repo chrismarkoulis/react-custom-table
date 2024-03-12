@@ -22,7 +22,9 @@ const Table: React.FC<TableProps> = ({ financialData }) => {
             Macro: 2,
             Credit: 3,
           };
-          return (assetClassOrder[a.assetClass] || Infinity) - (assetClassOrder[b.assetClass] || Infinity);
+          return sortOrder === 'asc' ?
+            (assetClassOrder[a.assetClass] || Infinity) - (assetClassOrder[b.assetClass] || Infinity) :
+            (assetClassOrder[b.assetClass] || Infinity) - (assetClassOrder[a.assetClass] || Infinity)
         case 'price':
           return sortOrder === 'asc' ? a.price - b.price : b.price - a.price;
         case 'ticker':
@@ -45,14 +47,19 @@ const Table: React.FC<TableProps> = ({ financialData }) => {
     [sortBy, sortOrder]
   );
 
-
   return (
     <table className={styles.table}>
       <thead>
         <tr className={styles.header}>
-          <th onClick={() => handleSort('ticker')}>Ticker</th>
-          <th onClick={() => handleSort('price')}>Price</th>
-          <th onClick={() => handleSort('assetClass')}>Asset Class</th>
+          <th className={styles.ticker} onClick={() => handleSort('ticker')}>
+            Ticker
+          </th>
+          <th className={styles.price} onClick={() => handleSort('price')}>
+            Price
+          </th>
+          <th className={styles.assetClass} onClick={() => handleSort('assetClass')}>
+            Asset Class
+          </th>
         </tr>
       </thead>
       <tbody>

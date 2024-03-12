@@ -1,35 +1,31 @@
 /* Table.module.css */
 
+:root {
+  --header-hover: #555;
+  --header-hover-text: #fff;
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
+  height: 80vh;
 }
 
 .header {
+  width: 20px;
   background-color: #f0f0f0;
   font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  padding: 15px 0; /* Add padding to the header cells */
+  cursor: pointer;
+  transition: background-color 0.5s, color 0.5s;
 }
 
-.row {
-  border-bottom: 1px solid #ccc;
-}
-
-.equities {
-  background-color: #cce5ff; /* Light blue */
-}
-
-.macro {
-  background-color: #ffffff; /* White */
-}
-
-.credit {
-  background-color: #e6ffe6; /* Light green */
-}
-
-.positive {
-  color: blue;
-}
-
-.negative {
-  color: red;
+.ticker:hover,
+.price:hover,
+.assetClass:hover {
+  background-color: var(--header-hover);
+  color: var(--header-hover-text);
+  user-select: none;
 }

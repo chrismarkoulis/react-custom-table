@@ -7,16 +7,27 @@ import { Table } from './components';
 const App: React.FC = () => {
 
   const dispatch = useDispatch<any>();
-  const financialData = useSelector((state: RootState) => state.financialData.data);
-  
+  const { data, error, loading } = useSelector((state: RootState) => state.financialData);
+
   useEffect(() => {
     dispatch(fetchFinancialData());
   }, [dispatch]);
 
+  console.log(loading);
+
+
   return (
     <div className="app-container">
-      <h1>Financial Instruments Table</h1>
-      <Table financialData={financialData} />
+      <h1 className="app-title">Financial Instruments</h1>
+      {
+        loading === false ?
+          <Table
+            financialData={data}
+          /> :
+          loading === true || loading === undefined ?
+            <div className="app-loading">Loading... </div> :
+            <div className="app-error">{error}</div>
+      }
     </div>
   );
 };
