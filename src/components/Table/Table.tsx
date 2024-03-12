@@ -63,8 +63,8 @@ const Table: React.FC<TableProps> = ({ financialData }) => {
         </tr>
       </thead>
       <tbody>
-        {sortedData.map((item: FinancialInstrument) => (
-          <TableRow key={item.ticker} financialInstrument={item} />
+        {sortedData.map((item: FinancialInstrument, index) => (
+          <TableRow key={index} financialInstrument={item} />
         ))}
       </tbody>
     </table>

@@ -18,7 +18,7 @@ export const fetchFinancialData = ():
         FetchFinancialDataSuccessAction |
         FetchFinancialDataFailureAction> => async (dispatch) => {
             try {
-                await dispatch(fetchFinancialDataRequest());
+                dispatch(fetchFinancialDataRequest());
                 const data: FinancialInstrument[] = await fetchFinancialDataAPI();
                 dispatch(fetchFinancialDataSuccess(data));
             } catch (error) {

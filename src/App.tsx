@@ -13,9 +13,6 @@ const App: React.FC = () => {
     dispatch(fetchFinancialData());
   }, [dispatch]);
 
-  console.log(loading);
-
-
   return (
     <div className="app-container">
       <h1 className="app-title">Financial Instruments</h1>

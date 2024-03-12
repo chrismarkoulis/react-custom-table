@@ -1,24 +1,24 @@
 .row {
   font-size: 16px;
   border-bottom: 1px solid #ccc;
-  text-align: center; /* Center text */
-  padding: 10px 0; /* Add vertical spacing */
+  text-align: center;
+  padding: 10px 0;
 }
 
 .row:not(:last-child) {
-  margin-bottom: 50px; /* Add margin bottom to all rows except the last one */
+  margin-bottom: 50px;
 }
 
 .equities {
-  background-color: #73a7e0; /* Light blue */
+  background-color: #73a7e0;
 }
 
 .macro {
-  background-color: #ffffff; /* White */
+  background-color: #ffffff;
 }
 
 .credit {
-  background-color: #88d188; /* Light green */
+  background-color: #88d188;
 }
 
 .positive {
